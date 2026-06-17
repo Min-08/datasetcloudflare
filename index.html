@@ -11,7 +11,7 @@
       padding: 24px;
       font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
       color: #111827;
-      background: #f7f7f8;
+      background: #f4f4f5;
     }
     main {
       max-width: 960px;
@@ -22,15 +22,11 @@
       font-size: 24px;
       line-height: 1.25;
     }
-    p {
-      margin: 0 0 16px;
-      color: #4b5563;
-    }
     .actions {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 12px;
+      margin: 16px 0 12px;
     }
     button {
       border: 0;
@@ -39,17 +35,17 @@
       font-size: 14px;
       font-weight: 700;
       color: #ffffff;
-      background: #2563eb;
+      background: #18181b;
       cursor: pointer;
     }
     button:focus-visible {
-      outline: 3px solid #93c5fd;
+      outline: 3px solid #a1a1aa;
       outline-offset: 2px;
     }
     #status {
       min-height: 20px;
       font-size: 14px;
-      color: #2563eb;
+      color: #3f3f46;
     }
     textarea {
       width: 100%;
@@ -68,7 +64,6 @@
 <body>
   <main>
     <h1>Meal Dataset</h1>
-    <p>총 1095줄입니다. 원본 txt의 첫 줄 숫자 1095는 제외했습니다.</p>
     <div class="actions">
       <button type="button" id="copyButton">전체 복사</button>
       <span id="status" aria-live="polite"></span>
