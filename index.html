@@ -48,11 +48,6 @@
       outline: 3px solid #a1a1aa;
       outline-offset: 2px;
     }
-    #status {
-      min-height: 20px;
-      font-size: 14px;
-      color: #3f3f46;
-    }
     textarea {
       width: 100%;
       min-height: 72vh;
@@ -73,7 +68,6 @@
       <h1>Meal Dataset</h1>
       <div class="actions">
         <button type="button" id="copyButton">복사</button>
-        <span id="status" aria-live="polite"></span>
       </div>
     </div>
     <textarea id="dataset" readonly>사과 콘샐러드 해시브라운 핫도그 10.1
@@ -1175,7 +1169,6 @@
   <script>
     const button = document.getElementById('copyButton');
     const dataset = document.getElementById('dataset');
-    const status = document.getElementById('status');
 
     button.addEventListener('click', async () => {
       dataset.focus();
@@ -1184,10 +1177,8 @@
 
       try {
         await navigator.clipboard.writeText(dataset.value);
-        status.textContent = '복사 완료';
       } catch {
-        const copied = document.execCommand('copy');
-        status.textContent = copied ? '복사 완료' : '선택된 텍스트를 Ctrl+C로 복사하세요';
+        document.execCommand('copy');
       }
     });
   </script>
