@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Meal Dataset</title>
+  <title>copydata</title>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -24,7 +24,11 @@
       flex-wrap: wrap;
       margin-bottom: 12px;
     }
-    h1 {
+    .titlebar:not(:first-child) {
+      margin-top: 36px;
+    }
+    h1,
+    h2 {
       margin: 0;
       font-size: 24px;
       line-height: 1.25;
@@ -60,17 +64,20 @@
       resize: vertical;
       white-space: pre;
     }
+    textarea.demo {
+      min-height: 180px;
+    }
   </style>
 </head>
 <body>
   <main>
     <div class="titlebar">
-      <h1>Meal Dataset</h1>
+      <h1>급식 데이터셋</h1>
       <div class="actions">
-        <button type="button" id="copyButton">복사</button>
+        <button type="button" class="copy-button" data-target="mealDataset">복사</button>
       </div>
     </div>
-    <textarea id="dataset" readonly>사과 콘샐러드 해시브라운 핫도그 10.1
+    <textarea id="mealDataset" readonly>사과 콘샐러드 해시브라운 핫도그 10.1
 참치전 임연수구이 멸치볶음 새우볶음 21.4
 오이무침 닭볶음탕 라볶이 콘샐러드 25.2
 핫도그 물만두 동그랑땡 떡갈비 7.2
@@ -1165,21 +1172,36 @@
 코다리조림 타코야끼 고구마맛탕 진미채무침 23.6
 고구마맛탕 임연수구이 도라지무침 감자튀김 28.3
 치즈떡볶이 맛살볶음 참치전 토스트 16.0</textarea>
+    <div class="titlebar">
+      <h2>예외처리 시연</h2>
+      <div class="actions">
+        <button type="button" class="copy-button" data-target="exceptionDemo">복사</button>
+      </div>
+    </div>
+    <textarea id="exceptionDemo" class="demo" readonly>치킨 X 계란말이 돈까스 12.5
+오이무침 X X 제육볶음 28.4
+치킨 치킨 계란말이 돈까스 13.2
+없는메뉴 치킨 계란말이 돈까스 15.0
+치킨 계란말이 돈까스 사과 -3.5
+치킨 계란말이 돈까스 사과 abc</textarea>
   </main>
   <script>
-    const button = document.getElementById('copyButton');
-    const dataset = document.getElementById('dataset');
+    const buttons = document.querySelectorAll('.copy-button');
 
-    button.addEventListener('click', async () => {
-      dataset.focus();
-      dataset.select();
-      dataset.setSelectionRange(0, dataset.value.length);
+    buttons.forEach((button) => {
+      button.addEventListener('click', async () => {
+        const dataset = document.getElementById(button.dataset.target);
 
-      try {
-        await navigator.clipboard.writeText(dataset.value);
-      } catch {
-        document.execCommand('copy');
-      }
+        dataset.focus();
+        dataset.select();
+        dataset.setSelectionRange(0, dataset.value.length);
+
+        try {
+          await navigator.clipboard.writeText(dataset.value);
+        } catch {
+          document.execCommand('copy');
+        }
+      });
     });
   </script>
 </body>
