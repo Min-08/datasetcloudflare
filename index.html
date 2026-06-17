@@ -17,8 +17,15 @@
       max-width: 960px;
       margin: 0 auto;
     }
+    .titlebar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
     h1 {
-      margin: 0 0 8px;
+      margin: 0;
       font-size: 24px;
       line-height: 1.25;
     }
@@ -26,7 +33,6 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      margin: 16px 0 12px;
     }
     button {
       border: 0;
@@ -63,10 +69,12 @@
 </head>
 <body>
   <main>
-    <h1>Meal Dataset</h1>
-    <div class="actions">
-      <button type="button" id="copyButton">전체 복사</button>
-      <span id="status" aria-live="polite"></span>
+    <div class="titlebar">
+      <h1>Meal Dataset</h1>
+      <div class="actions">
+        <button type="button" id="copyButton">전체 복사</button>
+        <span id="status" aria-live="polite"></span>
+      </div>
     </div>
     <textarea id="dataset" readonly>사과 콘샐러드 해시브라운 핫도그 10.1
 참치전 임연수구이 멸치볶음 새우볶음 21.4
